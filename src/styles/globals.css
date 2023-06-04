@@ -75,8 +75,8 @@ html {
   53%,
   57%,
   100% {
-    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
-       0 0 90px #f954a0, 0 0 95px #f954a0, 0 0 100px #f954a0;
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 90px #f954a0,
+      0 0 95px #f954a0, 0 0 100px #f954a0;
   }
 
   20%,
@@ -99,4 +99,27 @@ html {
   text-transform: uppercase;
   font-weight: 500;
   font-size: 2rem;
+}
+
+.shadow_btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
+  transition: 0.5s;
+  background: #F954A0;
+  /* box-shadow: 0 0 25px #F954A0; */
+}
+
+w3m-core-button:hover,
+.shadow_btn:hover {
+  transition: 0.5s;
+  box-shadow: 0 0 5px #f954a0, 0 0 25px #f954a0, 0 0 50px #f954a0,
+    0 0 100px #f954a0;
+  display: inline-flex;
+  border-radius: 3rem;
 }

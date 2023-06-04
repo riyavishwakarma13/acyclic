@@ -5,10 +5,10 @@ const NotFound = () => {
     return (
         <div
             id="home"
-            className=" hero-image select-none relative isolate flex  h-screen flex-col items-center justify-center gap-5"
+            className=" hero-image select-none relative isolate flex  h-screen flex-col items-center justify-center gap-14"
         >
             <h1 className="neon">Oops Page Not Found!</h1>
-            <Link href={"/"} className="text-white text-center bg-secondary px-4 rounded-full py-3  text-lg  font-semibold">
+            <Link href={"/"} className="text-white text-center bg-secondary shadow_btn px-4 rounded-full py-3  text-lg  font-semibold">
                 Go Back Home
             </Link>
         </div>
