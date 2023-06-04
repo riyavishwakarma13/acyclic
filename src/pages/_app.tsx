@@ -1,10 +1,20 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ThirdwebWeb3Provider } from '@3rdweb/hooks'
+
+import { Montserrat } from 'next/font/google'
+
+
+const montserrat = Montserrat({
+  style: ["normal"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <Component {...pageProps} />
+    <main className={`bg-primary ${montserrat.className} text-white`}>
+      <Component {...pageProps} />
+    </main>
   )
 }

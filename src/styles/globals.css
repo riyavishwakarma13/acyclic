@@ -1,3 +1,102 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  scroll-behavior: smooth !important;
+}
+
+*::selection {
+  background: #f954a0;
+  color: white;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: #000322;
+  position: absolute;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 1rem;
+  background: -webkit-linear-gradient(#f954a0, #f91afd);
+}
+
+*::-webkit-scrollbar {
+  width: 0.5rem;
+  height: 0.4rem;
+}
+
+@layer components {
+  .main-div {
+    @apply mx-auto max-w-7xl;
+  }
+  .input-field {
+    @apply w-full rounded-full border border-secondary bg-primary/40 px-4 py-2 outline-none placeholder:text-white;
+  }
+  .option-field {
+    @apply bg-primary placeholder:text-white;
+  }
+  .PhoneInput > input {
+    @apply w-full rounded-full bg-transparent outline-none;
+  }
+  .more-blogs:hover > svg {
+    @apply translate-x-2 transition-all duration-300 ease-in;
+  }
+}
+
+.recaptcha > div {
+  max-width: 87vw !important;
+}
+.recaptcha iframe[title="reCAPTCHA"] {
+  width: 100%;
+}
+
+.shadow-partner:hover {
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 1px 36px 10px rgba(249, 26, 253, 0.75);
+  -webkit-box-shadow: 0px 1px 36px 10px rgba(249, 26, 253, 0.75);
+  -moz-box-shadow: 0px 1px 36px 10px rgba(249, 26, 253, 0.75);
+}
+
+.neon {
+  color: #fff;
+  animation: flicker 1.5s infinite alternate;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff,
+       0 0 90px #f954a0, 0 0 95px #f954a0, 0 0 100px #f954a0;
+  }
+
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .neon {
+    font-size: 4.2rem;
+  }
+}
+
+.neon2 {
+  color: #fff;
+  text-shadow: 0 0 4px #fff, 0 0 11px #fff, 0 0 19px #fff, 0 0 40px #f954a0,
+    0 0 80px #f954a0, 0 0 90px #f954a0, 0 0 100px #f954a0, 0 0 150px #f954a0;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 2rem;
+}

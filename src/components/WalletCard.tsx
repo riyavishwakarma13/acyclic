@@ -4,6 +4,8 @@ import Web3 from 'web3';
 
 const WalletCard = () => {
 
+    // https://youtu.be/uWeK30vg35c?t=433
+
     const [isConnected, setIsConnected] = useState(false)
     const [ethBalance, setEthBalance] = useState("")
     const router = useRouter()
