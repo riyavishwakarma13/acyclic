@@ -41,7 +41,7 @@ const Home = () => {
                         <div className="space-y-4">
                             <h3>Your balance is {ethBalance}</h3>
                             <h3 className="break-all">Your address is {account}</h3>
-                            <h3>Your chain is {chain}</h3>
+                            <h3>Your chain ID is {chain}</h3>
                         </div>
                         <div className="flex justify-center">
                             <button className="shadow_btn" onClick={onDisconnect}>
