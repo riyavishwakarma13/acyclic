@@ -1,94 +1,58 @@
-import { useRouter } from 'next/router';
-import React, { useState } from 'react'
-import Web3 from 'web3';
+import { useAuthStore } from "@/store/auth";
+import { detectCurrentProvider } from "@/util";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import Web3 from "web3";
 
 const WalletCard = () => {
-
     // https://youtu.be/uWeK30vg35c?t=433
+    const router = useRouter();
 
-    const [isConnected, setIsConnected] = useState(false)
-    const [ethBalance, setEthBalance] = useState("")
-    const router = useRouter()
-
-    const detectCurrentProvider = () => {
-        let provider;
-        console.log(window.drip)
-        if (window.drip) {
-            provider = window.drip
-        } else if (window.ethereum) {
-            provider = window.ethereum
-        } else if (window.web3) {
-            provider = window.web3
-        } else {
-            console.log("Non-Ethereum browser detected. You should consider trying MetaMask!")
-        }
-        return provider;
-    }
+    const account = useAuthStore(state=>state.account);
+    const setAccount = useAuthStore(state=>state.setAccount);
 
     const onConnect = async () => {
         try {
-
-            const currentProvider = detectCurrentProvider()
-            console.log(currentProvider)
+            const currentProvider = detectCurrentProvider();
             if (currentProvider) {
-                await currentProvider.request({ method: 'eth_requestAccounts' });
+                await currentProvider.request({ method: "eth_requestAccounts" });
                 const web3 = new Web3(currentProvider);
                 const userAccount = await web3.eth.getAccounts();
                 const account = userAccount[0];
-                let ethBalance = await web3.eth.getBalance(account);
-                setEthBalance(ethBalance);
-                setIsConnected(true);
+                setAccount(account);
+                router.push("/home");
             }
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-        router.push('/idk')
-
-    }
+    };
 
     const onDisconnect = () => {
-        setIsConnected(false);
-    }
+        setAccount("");
+    };
 
     return (
-        <div className='app'>
-            <div className='app-header'>
-                <h1>React dApp authentication</h1>
-            </div>
-            <div className='app-wrapper'>
-                {
-                    !isConnected ? (
-                        <button className='app-button' onClick={onConnect}>
+        <div className="h-screen py-10">
+            <div className="flex flex-col items-center">
+                <div className="py-10">
+                    <h1 className="text-xl text-center font-bold md:text-4xl lg:text-8xl">
+                        Next.js <span className="text-secondary">DApp</span> authentication
+                    </h1>
+                </div>
+                <div className="app-wrapper">
+                    {!!!account ? (
+                        <button className="shadow_btn" onClick={onConnect}>
                             Connect Wallet
                         </button>
                     ) : (
-                        <button className='app-button' onClick={onDisconnect}>
+                        <button className="shadow_btn" onClick={onDisconnect}>
                             Disconnect Wallet
                         </button>
-                    )
-                }
-            </div>
-            <div>
-                {
-                    isConnected ? (
-                        <div>
-                            <h1>Wallet Connected</h1>
-                            <h2>You are connected to metamask</h2>
-                            <h3>Your ETH balance is {ethBalance}</h3>
-                            <button onClick={onDisconnect}>Disconnect</button>
-                            <p>
-                                address: { }
-                            </p>
-                        </div>
-                    ) : (
-                        <div>
-                            <h1>Wallet Not Connected</h1>
-                        </div>
-                    )
-                }
+                    )}
+                </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default WalletCard
+export default WalletCard;
