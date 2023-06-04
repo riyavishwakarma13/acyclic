@@ -5,11 +5,9 @@ import React, { useState } from "react";
 import Web3 from "web3";
 
 const WalletCard = () => {
-    // https://youtu.be/uWeK30vg35c?t=433
     const router = useRouter();
-
-    const account = useAuthStore(state=>state.account);
-    const setAccount = useAuthStore(state=>state.setAccount);
+    const account = useAuthStore(state => state.account);
+    const setAccount = useAuthStore(state => state.setAccount);
 
     const onConnect = async () => {
         try {

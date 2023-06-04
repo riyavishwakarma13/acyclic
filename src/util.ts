@@ -1,6 +1,9 @@
 export const detectCurrentProvider = () => {
   let provider;
-  console.log(window.drip);
+
+  // For nextjs server-side rendering
+  if (typeof window === "undefined") return null;
+
   if (window.drip) {
     provider = window.drip;
   } else if (window.ethereum) {
@@ -14,4 +17,3 @@ export const detectCurrentProvider = () => {
   }
   return provider;
 };
-
